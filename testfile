@@ -1,2 +1,24 @@
-#!/bin/zsh
-echo 'I was Bizarro all along, you fool!' > ~/Desktop/Defeated!.txt
+#!/usr/bin/env bash
+# harmless "payload" for malware analysis labs
+
+APP_SUPPORT_DIR="$HOME/Library/Application Support/Kryptonite"
+LOG_FILE="$APP_SUPPORT_DIR/kryptonite.log"
+
+mkdir -p "$APP_SUPPORT_DIR"
+
+{
+  echo "==== Kryptonite sample payload ===="
+  echo "Timestamp: $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+  echo "User: $(id -un)"
+  echo "Host: $(hostname)"
+  echo "PWD: $(pwd)"
+  echo
+} >> "$LOG_FILE"
+
+# Optional: benign user-visible signal (comment out if undesired)
+if command -v osascript >/dev/null 2>&1; then
+  /usr/bin/osascript -e 'display notification "Sample payload executed." with title "Kryptonite (Demo)"'
+fi
+
+# Exit cleanly
+exit 0
