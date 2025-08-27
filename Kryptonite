@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# harmless "payload" for malware analysis labs
 
 APP_SUPPORT_DIR="$HOME/Library/Application Support/Kryptonite"
 LOG_FILE="$APP_SUPPORT_DIR/kryptonite.log"
@@ -15,7 +14,6 @@ mkdir -p "$APP_SUPPORT_DIR"
   echo
 } >> "$LOG_FILE"
 
-# Optional: benign user-visible signal (comment out if undesired)
 if command -v osascript >/dev/null 2>&1; then
   /usr/bin/osascript -e 'display notification "Sample payload executed." with title "Kryptonite (Demo)"'
 fi
